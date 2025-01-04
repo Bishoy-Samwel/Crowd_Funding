@@ -52,11 +52,18 @@ class Project:
         pass
 
     @staticmethod
-    def view_projects(self):
-        pass
+    def view_projects():
+        print (Project.all)
 
     @staticmethod
-    def delete_project(self):
+    def delete_project(user_email):
+        title = input('> What is the title? ')
+        if Project.all[title]['email'] == user_email:
+            if Project.all[title]:
+                Project.all.pop(title, None)
+            print('Project is deleted')
+        else:
+            print('You are not allowd to delete this project')
         pass
 
 

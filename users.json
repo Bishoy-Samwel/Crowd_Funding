@@ -19,5 +19,12 @@
         "email": "ss@dd.com",
         "password": "aaAA22",
         "activated": true
+    },
+    "ss@ss.com": {
+        "first_name": "ff",
+        "last_name": "ffd",
+        "email": "ss@ss.com",
+        "password": "ssSS22",
+        "activated": true
     }
 }

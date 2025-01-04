@@ -27,7 +27,7 @@ class User:
         while True:
             email = check_valid_input('> What is your email? ', validate_email, 'email')
             password = check_valid_input('> What is your password? ', validate_input, 'input')
-            user = User.all[email]
+            if User.all[email]: user = User.all[email]
             if user and user['password'] == password:
                 if not user['activated']:
                     User.all[email]['activated'] = True
