@@ -1,7 +1,9 @@
+from distutils.command.install import install
 from logging import exception
 import json
 
 from input_handler import check_valid_input
+from project import Project
 from validation import validate_name, validate_email, validate_pswd, validate_pswd_conf, validate_phone, password, \
     validate_input
 
@@ -17,6 +19,10 @@ class User:
         self.activated = False
 
     @staticmethod
+    def create_project():
+        Project.create_project(User.logged_in['email'])
+
+    @staticmethod
     def login():
         while True:
             email = check_valid_input('> What is your email? ', validate_email, 'email')
@@ -29,11 +35,11 @@ class User:
                     print("Account activated")
                 User.logged_in = user
                 break
+            else: print("Invalid email or password")
 
     @classmethod
     def logout(self):
         User.logged_in = None
-
 
     @classmethod
     def save_user(cls, user):
@@ -44,7 +50,7 @@ class User:
     def update_user_data(cls):
         try:
             user_file_obj = open('users.json', 'w')
-        except exception as e:
+        except Exception as e:
             print(e)
             return False
         else:
@@ -60,11 +66,11 @@ class User:
     def get_users(self):
         try:
             user_file_obj = open('users.json', 'r').read()
-            user_list = json.loads(user_file_obj)
+            User.all = json.loads(user_file_obj)
         except Exception as e:
             return {}
         else:
-            return user_list
+            return  User.all
 
     @classmethod
     def register(cls):
@@ -77,3 +83,4 @@ class User:
         phone = check_valid_input('> What is your (EG) phone number? ', validate_phone, 'phone')
         u = User(f_name, l_name, phone, email, password)
         User.save_user(u.__dict__)
+

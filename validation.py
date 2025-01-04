@@ -8,11 +8,21 @@ msg_dict = {
     'email': 'Enter a valid email!',
     'password': 'Enter a stronger password!',
     'password_confirm': 'Password confirmation doesn\'t match!',
-    'phone': 'Enter a valid egyptian phone number!'
+    'phone': 'Enter a valid egyptian phone number!',
+    'number': 'Enter a number!',
+    'date': 'Enter a valid date dd-mm-yyyy!',
 }
 
 def validate_input(input):
     return len(input.strip()) > 0
+
+def validate_number(input):
+    return input.strip().isnumeric() > 0
+
+def validate_date(date):
+    return bool(re.match(r'^(0[1-9]|[12][0-9]|30)-(0[1-9]|1[0-2])-(202[4-9]|20[3-4][0-9]|2050)$', date))
+
+
 
 def validate_name(name):
     return name.isalpha()
@@ -22,7 +32,6 @@ def validate_email(email):
 
 def validate_phone(phone):
     return bool(re.match(r'^01[0-2][0-9]{8}$', phone))
-    pass
 
 def validate_pswd(pswd):
     pattern = r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}$'

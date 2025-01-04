@@ -1,7 +1,9 @@
 # import maskpass
+from project import Project
 from user import User
 
-User.all = User.get_users()
+User.get_users()
+Project.get_projects()
 
 
 while True:
@@ -28,7 +30,7 @@ while True:
     if x == '3' and logged_in:
         User.logout()
     if x == '4' and logged_in:
-        logged_in.create_project()
+        User.create_project()
 
 
 
