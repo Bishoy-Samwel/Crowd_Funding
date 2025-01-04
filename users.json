@@ -1,0 +1,23 @@
+{
+    "ccCC@cc.cc": {
+        "first_name": "ccc",
+        "last_name": "ccc",
+        "email": "ccCC@cc.cc",
+        "password": "ccCC22",
+        "activated": false
+    },
+    "ff@ff.com": {
+        "first_name": "fff",
+        "last_name": "fff",
+        "email": "ff@ff.com",
+        "password": "ffFF22",
+        "activated": true
+    },
+    "ss@dd.com": {
+        "first_name": "aaa",
+        "last_name": "sss",
+        "email": "ss@dd.com",
+        "password": "aaAA22",
+        "activated": true
+    }
+}

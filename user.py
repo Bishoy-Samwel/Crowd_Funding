@@ -24,20 +24,24 @@ class User:
             user = User.all[email]
             if user and user['password'] == password:
                 if not user['activated']:
-                    user['activated'] = True
-                    User.save_user(user)
+                    User.all[email]['activated'] = True
+                    User.update_user_data()
                     print("Account activated")
                 User.logged_in = user
                 break
 
+    @classmethod
     def logout(self):
         User.logged_in = None
 
+
     @classmethod
-    def save_user(self, user):
-        print(user.__dict__)
-        User.all = User.get_users()
-        User.all[user.email]= user.__dict__
+    def save_user(cls, user):
+        User.all[user['email']]= user
+        User.update_user_data()
+
+    @classmethod
+    def update_user_data(cls):
         try:
             user_file_obj = open('users.json', 'w')
         except exception as e:
@@ -72,4 +76,4 @@ class User:
                                              'password_confirm')
         phone = check_valid_input('> What is your (EG) phone number? ', validate_phone, 'phone')
         u = User(f_name, l_name, phone, email, password)
-        User.save_user(u)
+        User.save_user(u.__dict__)
