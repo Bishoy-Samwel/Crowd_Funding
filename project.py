@@ -20,9 +20,10 @@ class Project:
         details = check_valid_input('> What are the details? ', validate_input, 'input')
         target = check_valid_input('> What is the total target? ', validate_number, 'number')
         start_date = check_valid_input('> What is the start date? ', validate_date, 'date')
-        p = Project(title, details, target, start_date, target, email)
+        end_date = check_valid_input('> What is the end date? ', validate_date, 'date')
+        p = Project(title, details, target, start_date, end_date, target, email)
         Project.all[p.title] = p.__dict__
-        Project.update_project_data()
+        Project.update_projects_data()
         pass
 
     @staticmethod
@@ -35,8 +36,9 @@ class Project:
         else:
             return Project.all
 
+
     @staticmethod
-    def update_project_data():
+    def update_projects_data():
         try:
             project_file_obj = open('projects.json', 'w')
         except Exception as e:
@@ -48,10 +50,6 @@ class Project:
             return True
 
     @staticmethod
-    def save_project(self, uid):
-        pass
-
-    @staticmethod
     def view_projects():
         print (Project.all)
 
@@ -61,11 +59,28 @@ class Project:
         if Project.all[title]['email'] == user_email:
             if Project.all[title]:
                 Project.all.pop(title, None)
+                Project.update_projects_data()
             print('Project is deleted')
         else:
-            print('You are not allowd to delete this project')
+            print('You are not allowed to delete this project')
         pass
 
+    @staticmethod
+    def update_project(user_email):
+        title = input('> What is the title? ')
+        if Project.all[title]['email'] == user_email:
+            if Project.all[title]:
+                keys = ['title', 'details', 'target', 'start_date', 'end_date']
+                for i, key in enumerate(keys):
+                    print(f'{i} to edit {key}')
+                x  = int(input('> '))
+                val = input(f'> Enter the new {keys[x]}! ')
+                Project.all[title][keys[x]] = val
+                Project.update_projects_data()
+                print('Project is updated')
+        else:
+            print('You are not allowed to update this project')
+        pass
 
     @staticmethod
     def search_project(self):
