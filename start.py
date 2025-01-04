@@ -2,10 +2,11 @@
 from user import User
 
 User.all = User.get_users()
-looged_in = User.logged_in
+
 
 while True:
-    if looged_in :
+    logged_in = User.logged_in
+    if logged_in :
         print("""
                 > 3 to sign out
                 > 4 to create project
@@ -24,10 +25,10 @@ while True:
         User.register()
     if x == '2':
         User.login()
-    if x == '3' and looged_in:
+    if x == '3' and logged_in:
         User.logout()
-    if x == '4' and looged_in:
-        looged_in.create_project()
+    if x == '4' and logged_in:
+        logged_in.create_project()
 
 
 
