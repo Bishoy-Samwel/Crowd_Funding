@@ -21,7 +21,7 @@ class Project:
         target = check_valid_input('> What is the total target? ', validate_number, 'number')
         start_date = check_valid_input('> What is the start date? ', validate_date, 'date')
         end_date = check_valid_input('> What is the end date? ', validate_date, 'date')
-        p = Project(title, details, target, start_date, end_date, target, email)
+        p = Project(title, details, target, start_date, end_date, email)
         Project.all[p.title] = p.__dict__
         Project.update_projects_data()
         pass

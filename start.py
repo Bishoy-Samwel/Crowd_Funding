@@ -30,13 +30,14 @@ while True:
     if x == '3' and logged_in:
         User.logout()
     if x == '4' and logged_in:
-        User.create_project()
+        Project.create_project(User.logged_in['email'])
     if x == '5' and logged_in:
         Project.view_projects()
     if x == '6' and logged_in:
         Project.update_project(User.logged_in['email'])
     if x == '7' and logged_in:
-        Project.delete_project(User.logged_in['email']                                  )
+        Project.delete_project(User.logged_in['email']
+   )
 
 
 

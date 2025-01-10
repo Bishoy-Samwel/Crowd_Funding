@@ -19,10 +19,6 @@ class User:
         self.activated = False
 
     @staticmethod
-    def create_project():
-        Project.create_project(User.logged_in['email'])
-
-    @staticmethod
     def login():
         while True:
             email = check_valid_input('> What is your email? ', validate_email, 'email')

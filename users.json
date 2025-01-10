@@ -26,5 +26,19 @@
         "email": "ss@ss.com",
         "password": "ssSS22",
         "activated": true
+    },
+    "b@b.com": {
+        "first_name": "bishoy",
+        "last_name": "faheem",
+        "email": "b@b.com",
+        "password": "aaAA22",
+        "activated": true
+    },
+    "bishoy@g.com": {
+        "first_name": "b",
+        "last_name": "f",
+        "email": "bishoy@g.com",
+        "password": "aaAA22",
+        "activated": true
     }
 }
